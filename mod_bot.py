@@ -55,12 +55,10 @@ async def get_buying_list(message: types.Message):
     for i in range(1, 5):
         product_info = f'Название: Product{i} | Описание: описание {i} | Цена: {i * 100}'
         products_info.append(product_info)
-        # Здесь вы можете добавить код для отправки изображений, если они у вас есть
-        photo_path = f'Product{i}.jpg'  # Путь к изображению продукта (замените на актуальный путь)
+        photo_path = f'Product{i}.jpg'  
         with open(photo_path, 'rb') as photo:
             await message.answer(product_info)
             await bot.send_photo(message.chat.id, photo)
-        #await message.answer_photo(photo='URL_или_путь_к_изображению')  # Пример отправки изображения
     await message.answer("\n".join(products_info))
     await message.answer("Выберите продукт для покупки:", reply_markup=product_inline_keyboard)
 
